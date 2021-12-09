@@ -16,7 +16,7 @@
 ### Demos
 
 - [Finished code](https://github.com/craigmckeachie/a12_demos) for each demo is available online in a public GitHub repository.
-  - Each demo is a branch.
+  - Each demo is a branch
   - See the demo manual for more details on how to access and run the demos
 - [Demo Manual](./AngularDemosManual.md) with step-by-step directions for live coding the demos is available online
 - Demonstrations are to be done by instructor but not the students
@@ -29,7 +29,7 @@
 - Building an application one step at a time
 - Hands-on for attendees
 - Step-by-step directions are provided in a pdf lab manual
-- [Solution code](https://github.com/craigmckeachie/a12-labs) for each lab is available online in a public GitHub repository.
+- [Solution code](https://github.com/craigmckeachie/a12-labs) for each lab is available online in a public GitHub repository
   - Each lab is a separate branch
   - See the lab manual for more details on how to access and run the demos
 - If you miss lab or don’t finish a lab, you can pickup on the next one
