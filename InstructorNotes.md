@@ -47,7 +47,7 @@
   - AngularLabManualIntroduction.pdf
   - TypeScriptSlides.pdf
   - TypeScriptLabManual.pdf
-  - TypeScript content is included/bundled with the purchase of Introduction to Angular or Comprehensive Angular courseware
+    > TypeScript content is included/bundled for free with the purchase of Introduction to Angular courseware
 
 - AdvancedAngular.zip
 
@@ -61,6 +61,7 @@
   - TypeScriptLabManual.pdf
   - AngularSlidesAdvanced.pdf
   - AngularLabManualAdvanced.pdf
+    > TypeScript content is included/bundled for free with the purchase of Comprehensive Angular courseware
 
 ## Errata
 
