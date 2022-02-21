@@ -249,7 +249,7 @@ ng g component hello-world -d
 @Component({
   selector: "app-root",
   template: ` <app-hello-world></app-hello-world> `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {}
 ```
@@ -334,7 +334,7 @@ Add new component selectors/tags to the app.component template.
     <app-tag-two></app-tag-two>
     <app-tag-three></app-tag-three>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {}
 ```
@@ -433,13 +433,13 @@ git checkout json-pipe -f
       <pre>{{ object | json }}</pre>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   object: Object = {
     foo: "bar",
     baz: "qux",
-    nested: { xyz: 3, numbers: [1, 2, 3, 4, 5] }
+    nested: { xyz: 3, numbers: [1, 2, 3, 4, 5] },
   };
 }
 ```
@@ -456,7 +456,7 @@ export class AppComponent {
       <li *ngFor="let fruit of fruits">{{ fruit }}</li>
     </ul>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   fruits = ["Apple", "Orange", "Plum"];
@@ -481,12 +481,12 @@ The Angular logo used for this demonstration is available in the `src\assets` di
     <h2>{{ image.name }}</h2>
     <p>{{ image.path }}</p>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   image = {
     path: "../assets/angular_solidBlack.png",
-    name: "Angular Logo"
+    name: "Angular Logo",
   };
 }
 ```
@@ -501,12 +501,12 @@ export class AppComponent {
   template: `
     <img [src]="image.path" [alt]="image.name" [title]="image.name" />
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   image = {
     path: "../assets/angular_solidBlack.png",
-    name: "Angular Logo"
+    name: "Angular Logo",
   };
 }
 ```
@@ -537,7 +537,7 @@ import { Component, OnInit, Input } from "@angular/core";
       <li *ngFor="let fruit of fruits">{{ fruit }}</li>
     </ul>
   `,
-  styles: []
+  styles: [],
 })
 export class FruitListComponent implements OnInit {
   @Input()
@@ -554,7 +554,7 @@ export class FruitListComponent implements OnInit {
 @Component({
   selector: "app-root",
   template: ` <app-fruit-list [fruits]="data"></app-fruit-list> `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   data: string[] = ["Apple", "Orange", "Plum"];
@@ -572,7 +572,7 @@ export class AppComponent {
     <a href="" (click)="onClick($event)">Click Me!</a>
     <p [innerText]="message"></p>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   message = "";
@@ -619,7 +619,7 @@ git checkout pipes -f
       </tr>
     </table>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   amount = 47.341;
@@ -647,7 +647,7 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
     <input type="text" #email placeholder="email" />
     <button (click)="onClick(email.value)">Subscribe</button>
   `,
-  styles: []
+  styles: [],
 })
 export class EmailSubscribeComponent implements OnInit {
   @Output()
@@ -673,7 +673,7 @@ import { Component } from "@angular/core";
     ></app-email-subscribe>
     {{ message }}
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   message: string;
@@ -696,7 +696,7 @@ styles: [
     h1 {
       color: rgb(255, 165, 0);
     }
-  `
+  `,
 ];
 ```
 
@@ -707,7 +707,7 @@ styles: [
 @Component({
   selector: "app-root",
   template: ` <h1>Welcome to {{ title }}!</h1> `,
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
   title = "playground";
@@ -738,7 +738,7 @@ h1 {
 
     <div>Welcome back friend.</div>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   isSignedIn = false;
@@ -850,14 +850,14 @@ import { FormGroup, FormControl } from "@angular/forms";
   </pre
     >
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit {
   loginForm: FormGroup;
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       username: new FormControl(),
-      password: new FormControl()
+      password: new FormControl(),
     });
   }
   onSubmit() {
@@ -1054,8 +1054,8 @@ export class AppComponent implements OnInit {
       .highlight {
         background-color: #ffff00;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class AppComponent {}
 ```
@@ -1271,7 +1271,7 @@ ng g service fruit
 import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class FruitService {
   constructor() {}
@@ -1308,7 +1308,7 @@ import { Injectable } from "@angular/core";
 import { of, Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class FruitService {
   constructor() {}
@@ -1327,7 +1327,7 @@ export class AppComponent implements OnInit {
   constructor(private fruitService: FruitService) {}
 
   ngOnInit(): void {
-    this.fruitService.list().subscribe(data => (this.fruits = data));
+    this.fruitService.list().subscribe((data) => (this.fruits = data));
   }
 }
 ```
@@ -1463,7 +1463,7 @@ import { fromEvent } from "rxjs";
 @Component({
   selector: "app-root",
   template: ` <input #myInput /> `,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit {
   @ViewChild("myInput", { static: true }) input;
@@ -1505,15 +1505,15 @@ import { of, Observer } from "rxjs";
 @Component({
   selector: "app-root",
   template: ``,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
     const observable$ = of(1, 2, 3);
     const observer: Observer<any> = {
-      next: x => console.log(x),
+      next: (x) => console.log(x),
       complete: () => console.log("completed"),
-      error: x => console.log(x)
+      error: (x) => console.log(x),
     };
     observable$.subscribe(observer);
   }
@@ -1754,21 +1754,21 @@ import { Observable } from "rxjs";
 @Component({
   selector: "app-root",
   template: ``,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-    const observable = new Observable(subscriber => {
+    const observable = new Observable((subscriber) => {
       subscriber.next(Math.random());
     });
 
     // subscription 1
-    observable.subscribe(data => {
+    observable.subscribe((data) => {
       console.log(data); // 0.24957144215097515 (random number)
     });
 
     // subscription 2
-    observable.subscribe(data => {
+    observable.subscribe((data) => {
       console.log(data); // 0.004617340049055896 (random number)
     });
   }
@@ -1790,19 +1790,19 @@ import { Subject } from "rxjs";
 @Component({
   selector: "app-root",
   template: ``,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
     const subject = new Subject();
 
     // subscription 1
-    subject.subscribe(data => {
+    subject.subscribe((data) => {
       console.log(data); // 0.24957144215097515 (random number)
     });
 
     // subscription 2
-    subject.subscribe(data => {
+    subject.subscribe((data) => {
       console.log(data); // 0.004617340049055896 (random number)
     });
 
@@ -1829,23 +1829,23 @@ import { Subject, Observable } from "rxjs";
 @Component({
   selector: "app-root",
   template: ``,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-    const observable = new Observable(subscriber => {
+    const observable = new Observable((subscriber) => {
       subscriber.next(Math.random());
     });
 
     const subject = new Subject();
 
     // subscriber 1
-    subject.subscribe(data => {
+    subject.subscribe((data) => {
       console.log(data);
     });
 
     // subscriber 2
-    subject.subscribe(data => {
+    subject.subscribe((data) => {
       console.log(data);
     });
 
@@ -1874,14 +1874,14 @@ import { Subject } from "rxjs";
     <br />
     <p *ngFor="let message of messages">{{ message }}</p>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit {
   messages: string[] = [];
   private searchTermStream$ = new Subject<string>();
 
   ngOnInit(): void {
-    this.searchTermStream$.subscribe(term =>
+    this.searchTermStream$.subscribe((term) =>
       this.messages.push(`http call for: ${term}`)
     );
   }
@@ -2090,10 +2090,10 @@ Rename `photo.ts` to `photo.model.ts`
 
 ```ts
 export class Photo {
-  id: number;
-  title: string;
-  url: string;
-  thumbnailUrl: string;
+  id: number = 0;
+  title?: string;
+  url?: string;
+  thumbnailUrl?: string;
 }
 ```
 
@@ -2107,6 +2107,8 @@ ng g service photo
 
 ```diff
 // app.module.ts
+...
++ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule,
@@ -2129,7 +2131,7 @@ import { Injectable } from '@angular/core';
 + import { Observable } from 'rxjs';
 
 @Injectable({
-+  providedIn: 'root'
+  providedIn: 'root'
 })
 export class PhotoService {
 +  constructor(private http: HttpClient) {}
@@ -2150,17 +2152,17 @@ import { PhotoService } from "./photo.service";
   template: `
     <h1>Photos</h1>
     <div *ngFor="let photo of photos">
-      <img [src]="photo.thumbnailUrl" alt="" />
+      <img [src]="photo.thumbnailUrl" [alt]="photo.title" />
       <p>{{ photo.title }}</p>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit {
-  pphotos: Photo[];
+  photos: Photo[] = [];
   constructor(private photoService: PhotoService) {}
   ngOnInit(): void {
-    this.photoService.getAll().subscribe(data => (this.photos = data));
+    this.photoService.getAll().subscribe((data) => (this.photos = data));
   }
 }
 ```
@@ -2179,7 +2181,7 @@ import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class PhotoService {
   constructor(private http: HttpClient) {}
@@ -2334,7 +2336,7 @@ export const MOVIES: Movie[] = [
     4,
     "Star Wars: Episode IV - A New Hope ",
     "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire/`s world-destroying battle-station while also attempting to rescue Princess Leia from the evil Darth Vader."
-  )
+  ),
 ];
 ```
 
@@ -2360,7 +2362,7 @@ export class MovieService {
   }
 
   find(id: number): Observable<Movie> {
-    const movie = MOVIES.find(m => m.id === id);
+    const movie = MOVIES.find((m) => m.id === id);
     return of(movie);
   }
 }
@@ -2734,9 +2736,9 @@ Create a reducer.
 
    const _counterReducer = createReducer(
      initialState,
-     on(increment, state => state + 1),
-     on(decrement, state => state - 1),
-     on(reset, state => 0)
+     on(increment, (state) => state + 1),
+     on(decrement, (state) => state - 1),
+     on(reset, (state) => 0)
    );
 
    export function counterReducer(state, action) {
@@ -2943,7 +2945,7 @@ import { Action } from "@ngrx/store";
 export enum ActionTypes {
   Increment = "[Counter Component] Increment",
   Decrement = "[Counter Component] Decrement",
-  Reset = "[Counter Component] Reset"
+  Reset = "[Counter Component] Reset",
 }
 
 export class Increment implements Action {
@@ -3217,7 +3219,7 @@ Finished code available in `demos\ngrx-counter`.
      loading: false,
      saving: false,
      error: "",
-     projects: []
+     projects: [],
    };
 
    export const getProjects = (state: State) => state.projectState.projects;
@@ -3305,7 +3307,7 @@ Finished code available in `demos\ngrx-counter`.
      loadFail,
      save,
      saveSuccess,
-     saveFail
+     saveFail,
    } from "./project.actions";
 
    @Injectable()
@@ -3315,8 +3317,8 @@ Finished code available in `demos\ngrx-counter`.
          ofType(load),
          switchMap(() => {
            return this.projectService.list().pipe(
-             map(data => loadSuccess({ projects: data })),
-             catchError(error => of(loadFail({ error: error })))
+             map((data) => loadSuccess({ projects: data })),
+             catchError((error) => of(loadFail({ error: error })))
            );
          })
        );
@@ -3328,7 +3330,7 @@ Finished code available in `demos\ngrx-counter`.
          mergeMap(({ project }) => {
            return this.projectService.put(project).pipe(
              map(() => saveSuccess({ project })),
-             catchError(error => of(saveFail({ error: error })))
+             catchError((error) => of(saveFail({ error: error })))
            );
          })
        );
@@ -3600,7 +3602,7 @@ import { Component } from "@angular/core";
     </pre
     >
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   onSubmit(form) {
@@ -3706,7 +3708,7 @@ export class AppComponent {
     />
     <p>{{ message }}</p>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   message = "";
@@ -3720,7 +3722,7 @@ import { FormsModule } from "@angular/forms";
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -3732,7 +3734,7 @@ export class AppModule {}
     <input [(ngModel)]="message" type="text" />
     <p>{{ message }}</p>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   message = "";
@@ -4130,7 +4132,7 @@ import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
       </div>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   movies = [
@@ -4141,7 +4143,7 @@ export class AppComponent {
     "Episode V - The Empire Strikes Back",
     "Episode VI - Return of the Jedi",
     "Episode VII - The Force Awakens",
-    "Episode VIII - The Last Jedi"
+    "Episode VIII - The Last Jedi",
   ];
 
   drop(event: CdkDragDrop<string[]>) {
@@ -4216,8 +4218,8 @@ import * as faker from "faker";
       .list-item {
         height: 50px;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class AppComponent {
   items = Array.from({ length: 100000 }).map(() => `${faker.name.findName()}`);
@@ -4255,7 +4257,7 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "app-root",
-  template: "<h1>Hello Angular</h1>"
+  template: "<h1>Hello Angular</h1>",
 })
 export class AppComponent {}
 
@@ -4266,7 +4268,7 @@ import { BrowserModule } from "@angular/platform-browser";
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 
@@ -4307,7 +4309,7 @@ import { Component } from "@angular/core";
     <app-fruit-list [fruits]="data"></app-fruit-list>
     <button (click)="onClickChange()">Change List</button>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   data: string[] = ["Apple", "Orange", "Plum"];
@@ -4325,7 +4327,7 @@ import {
   OnInit,
   Input,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 
 @Component({
@@ -4337,7 +4339,7 @@ import {
       </li>
     </ul>
   `,
-  styles: []
+  styles: [],
 })
 export class FruitListComponent implements OnInit, OnChanges {
   @Input()
@@ -4474,7 +4476,7 @@ import { Component } from "@angular/core";
     <br />
     <button (click)="onClickRemove()">Remove</button>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
   data: string[] = ["Apple", "Orange", "Plum"];
@@ -4497,7 +4499,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  OnDestroy
+  OnDestroy,
 } from "@angular/core";
 
 @Component({
@@ -4509,7 +4511,7 @@ import {
       </li>
     </ul>
   `,
-  styles: []
+  styles: [],
 })
 export class FruitListComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
@@ -4553,7 +4555,7 @@ import { HelloWorldComponent } from "./hello-world/hello-world.component";
     <br />
     <button (click)="onClickRemove()">Remove</button>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(HelloWorldComponent, { static: true }) helloWorldComponent;
@@ -4591,7 +4593,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  OnDestroy
+  OnDestroy,
 } from "@angular/core";
 
 @Component({
@@ -4603,7 +4605,7 @@ import {
       </li>
     </ul>
   `,
-  styles: []
+  styles: [],
 })
 export class FruitListComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
@@ -4640,13 +4642,13 @@ import {
   OnInit,
   ContentChild,
   AfterViewInit,
-  AfterContentInit
+  AfterContentInit,
 } from "@angular/core";
 
 @Component({
   selector: "app-hello-world",
   template: ` <p>Hello World! My name is: <ng-content></ng-content></p> `,
-  styles: []
+  styles: [],
 })
 export class HelloWorldComponent
   implements OnInit, AfterViewInit, AfterContentInit
@@ -4678,7 +4680,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  OnDestroy
+  OnDestroy,
 } from "@angular/core";
 
 @Component({
@@ -4690,7 +4692,7 @@ import {
       </li>
     </ul>
   `,
-  styles: []
+  styles: [],
 })
 export class FruitListComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
@@ -4726,7 +4728,7 @@ import { HelloWorldComponent } from "./hello-world/hello-world.component";
       <h2 #nameContent>Bond, James Bond</h2>
     </app-hello-world>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(HelloWorldComponent, { static: true }) helloWorldComponent;
