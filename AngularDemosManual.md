@@ -3448,10 +3448,10 @@ export const projectReducer = createReducer(
    -  projects: Project[];
    -  errorMessage: string;
    -  loading: boolean;
-   +  projects$: Observable<Project[]>;
-   +  errorMessage$: Observable<string>;
-   +  loading$: Observable<boolean>;
-   +  saving$: Observable<boolean>;
+   +  projects$!: Observable<Project[]>;
+   +  errorMessage$!: Observable<string>;
+   +  loading$!: Observable<boolean>;
+   +  saving$!: Observable<boolean>;
 
    -  constructor(private projectService: ProjectService) {}
    +  constructor(private store: Store<State>) {}
@@ -3536,11 +3536,7 @@ export const projectReducer = createReducer(
     HttpClientModule,
     HomeModule,
     StoreModule.forRoot(reducers, {
-      metaReducers,
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true
-      }
+      metaReducers
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
