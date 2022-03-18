@@ -2091,9 +2091,9 @@ Rename `photo.ts` to `photo.model.ts`
 ```ts
 export class Photo {
   id: number = 0;
-  title?: string;
-  url?: string;
-  thumbnailUrl?: string;
+  title?: string | null;
+  url?: string | null;
+  thumbnailUrl?: string | null;
 }
 ```
 
@@ -2171,13 +2171,13 @@ export class AppComponent implements OnInit {
 
 ### Error Handling
 
-```ts
-// photo.service.ts
+#### `photo.service.ts`
 
-import { Injectable } from "@angular/core";
+```ts
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Photo } from "./photo.model";
+import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
+import { Photo } from "./photo";
 import { catchError } from "rxjs/operators";
 
 @Injectable({
@@ -2192,6 +2192,39 @@ export class PhotoService {
         console.log(error);
         return throwError("An error occured loading the photos.");
       })
+    );
+  }
+}
+```
+
+#### `app.component.ts`
+
+```ts
+import { OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { Photo } from "./photo";
+import { PhotoService } from "./photo.service";
+
+@Component({
+  selector: "app-root",
+  template: `
+    <h1>Photos</h1>
+    <p *ngIf="errorMessage">{{ errorMessage }}</p>
+    <div *ngFor="let photo of photos">
+      <img [src]="photo.thumbnailUrl" [alt]="photo.title" />
+      <p>{{ photo.title }}</p>
+    </div>
+  `,
+  styles: [],
+})
+export class AppComponent implements OnInit {
+  photos: Photo[] = [];
+  errorMessage?: string | null;
+  constructor(private photoService: PhotoService) {}
+  ngOnInit(): void {
+    this.photoService.getAll().subscribe(
+      (data) => (this.photos = data),
+      (error) => (this.errorMessage = error)
     );
   }
 }
@@ -3242,49 +3275,46 @@ Finished code available in `demos\ngrx-counter`.
 
 1. Create the `projectReducer` using the `createReducer` helper function.
 
-   **`src\app\projects\shared\state\project.reducer.ts`**
+**`src\app\projects\shared\state\project.reducer.ts`**
 
-   ```ts
-   ... // add this code to the code in the last step
-   import { createReducer, on } from '@ngrx/store';
-   import {
-   load,
-   loadSuccess,
-   loadFail,
-   save,
-   saveSuccess,
-   saveFail
-   } from './project.actions';
+```ts
+... // add this code to the code in the last step
 
-   const _projectReducer = createReducer(
-   initialState,
-   on(load, state => ({ ...state, loading: true })),
-   on(loadSuccess, (state, { projects }) => ({
-       ...state,
-       projects,
-       loading: false,
-       saving: false
-   })),
-   on(loadFail, (state, { error }) => ({ ...state, error, loading: false })),
-   on(save, state => ({ ...state, saving: true })),
-   on(saveSuccess, (state, { project }) => {
-       const updatedProjects = state.projects.map(item =>
-       project.id === item.id ? project : item
-       );
-       return {
-       ...state,
-       projects: updatedProjects,
-       saving: false
-       };
-   }),
-   on(saveFail, (state, { error }) => ({ ...state, error, saving: false }))
-   );
+import { createReducer, on } from '@ngrx/store';
+import {
+  load,
+  loadSuccess,
+  loadFail,
+  save,
+  saveSuccess,
+  saveFail,
+} from './project.actions';
 
-   export function projectReducer(state, action) {
-   return _projectReducer(state, action);
-   }
+export const projectReducer = createReducer(
+  initialState,
+  on(load, (state) => ({ ...state, loading: true })),
+  on(loadSuccess, (state, { projects }) => ({
+    ...state,
+    projects,
+    loading: false,
+    saving: false,
+  })),
+  on(loadFail, (state, { error }) => ({ ...state, error, loading: false })),
+  on(save, (state) => ({ ...state, saving: true })),
+  on(saveSuccess, (state, { project }) => {
+    const updatedProjects = state.projects.map((item) =>
+      project.id === item.id ? project : item
+    );
+    return {
+      ...state,
+      projects: updatedProjects,
+      saving: false,
+    };
+  }),
+  on(saveFail, (state, { error }) => ({ ...state, error, saving: false }))
+);
 
-   ```
+```
 
 <div style="page-break-after: always;"></div>
 
