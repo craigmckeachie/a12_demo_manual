@@ -3248,7 +3248,7 @@ Finished code available in `demos\ngrx-counter`.
      projects: Project[];
    }
 
-   export const initialState = {
+   export const initialState: ProjectState = {
      loading: false,
      saving: false,
      error: "",
